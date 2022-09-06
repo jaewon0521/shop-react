@@ -1,0 +1,17 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body,
+body[data-theme='light'] {
+  --background-color: white;
+}
+body[data-theme='dark'] {
+  --background-color: black;
+}
+
+.carousel-container .carousel-slide {
+  display: flex;
+  justify-content: center;
+  height: 700px;
+}
