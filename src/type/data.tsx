@@ -1,11 +1,14 @@
-interface DetailProps {
-  category: string;
-  description: string;
-  id: number;
-  image: string;
-  price: number;
-  rating: [number, number]; // any ?? type지정??
-  title: string;
+interface rating {
+  count: number;
+  rate: number;
 }
 
-export interface ProductsProps extends Array<DetailProps> {}
+export interface DetailProps {
+  category?: string;
+  description?: string;
+  id?: number;
+  image?: string;
+  price?: number;
+  rating?: rating;
+  title?: string;
+}

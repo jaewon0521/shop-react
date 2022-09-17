@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
+import DetailProduct from '../components/product/DetailProduct';
 
 const Digital = () => {
-  return <div></div>;
+  return <DetailProduct />;
 };
 
 export default Digital;

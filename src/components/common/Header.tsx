@@ -1,9 +1,10 @@
-import Category from './Category';
-import EventNav from './EventNav';
-import Logo from './Logo';
-import NavSide from './NavSide';
+import React from 'react';
+import Category from '../nav/Category';
+import EventNav from '../nav/EventNav';
+import Logo from '../nav/Logo';
+import NavSide from '../nav/NavSide';
 
-const Nav = () => {
+const Header = () => {
   return (
     <div className="fixed z-10 w-full navbar shadow-lg bg-white dark:bg-neutral text-neutral-content">
       <div className="flex w-full xl:container xl:m-auto">
@@ -16,4 +17,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default Header;

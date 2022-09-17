@@ -1,8 +1,13 @@
-import Main from '../components/main/Main';
-import ProductsContainer from '../module/products/ProductsContainer';
+import Carousel from '../components/common/Carousel';
+import ProductContainer from '../container/ProductContainer';
 
 const MainPage = () => {
-  return <Main />;
+  return (
+    <>
+      <Carousel />
+      <ProductContainer />
+    </>
+  );
 };
 
 export default MainPage;
