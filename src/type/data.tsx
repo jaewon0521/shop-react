@@ -1,14 +1,14 @@
-interface rating {
+interface Irating {
   count: number;
   rate: number;
 }
 
-export interface DetailProps {
+export interface IProduct {
   category?: string;
   description?: string;
   id?: number;
   image?: string;
   price?: number;
-  rating?: rating;
+  rating?: Irating;
   title?: string;
 }

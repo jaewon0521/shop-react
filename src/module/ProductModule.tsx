@@ -1,7 +1,7 @@
 import { atom, selector, selectorFamily } from 'recoil';
-import { DetailProps } from '../type/data';
+import { IProduct } from '../type/data';
 
-export const productValue = atom<DetailProps[]>({
+export const productAtom = atom<IProduct[]>({
   key: 'LIST_PRODUCT',
   default: [],
 });
@@ -9,8 +9,9 @@ export const productValue = atom<DetailProps[]>({
 export const productValueFilter = selector({
   key: 'FILTER_LIST_PRODUCT',
   get: ({ get }) => {
-    const data = get(productValue);
-    const filterdData = data.reduce((acc: any, cur: DetailProps) => {
+    const data = get(productAtom);
+    const filterdArray = [];
+    const filterdData = data.reduce((acc: any, cur: IProduct) => {
       switch (cur.category) {
         case 'electronics':
           acc.digital = acc.digital ? [...acc.digital, cur] : [cur];
@@ -27,6 +28,15 @@ export const productValueFilter = selector({
       }
       return acc;
     }, {});
-    return filterdData;
+    for (let category in filterdData) {
+      let name =
+        category === 'digital'
+          ? '디지털'
+          : category === 'jewelery'
+          ? '액세서리'
+          : '패션';
+      filterdArray.push({ data: filterdData[category], name });
+    }
+    return filterdArray;
   },
 });

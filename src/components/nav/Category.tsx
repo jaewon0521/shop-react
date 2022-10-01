@@ -1,16 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const Item = [
-  { key: 'fashion', name: '패션' },
-  { key: 'accessory', name: '액세서리' },
-  { key: 'digital', name: '디지털' },
-];
+import { category } from '../../constance/category';
 
 const CategoryItem = () => {
   return (
     <>
-      {Item.map(({ key, name }) => (
+      {category.map(({ key, name }) => (
         <Link
           to={`/${key}`}
           key={`${key}`}

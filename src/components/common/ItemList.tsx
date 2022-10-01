@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { DetailProps } from '../../type/data';
+import { IProduct } from '../../type/data';
 
-const ItemList = ({ data, title }: { data: DetailProps[]; title: string }) => {
+interface IProps {
+  data: IProduct[];
+  title: string;
+}
+
+const ItemList = ({ data, title }: IProps) => {
   return (
     <section className="pt-6 lg:pt-12 pb-4 lg:pb-8 px-4 xl:px-2 mt-10 xl:container mx-auto">
       <h2 className="mb-5 lg:mb-8 text-3xl lg:text-4xl text-center font-bold">
@@ -17,7 +22,7 @@ const ItemList = ({ data, title }: { data: DetailProps[]; title: string }) => {
             <Link
               key={el.id}
               className="card card-bordered border-gray-200 dark:border-gray-800 card-compact lg:card-normal"
-              to={`product/${el.id}`}
+              to={`/product/${el.id}`}
             >
               <figure className="flex h-80 bg-white overflow-hidden">
                 <img

@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { getIdProducts } from '../../api/producs';
 import { DetailProps } from '../../type/data';
+import BreadCrumb from '../common/BreadCrumb';
 import Star from '../common/Star';
 
 interface intoName extends DetailProps {
@@ -32,19 +33,12 @@ const DetailProduct = () => {
     getProduct();
   }, []);
 
-  if (!Object.keys(product).length) return;
-
-  console.log(product);
+  if (!Object.keys(product).length) return <></>;
 
   return (
     <section className="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto">
       <div>
-        <div className="text-sm breadcrumbs">
-          <ul>
-            <li>{product.name}</li>
-            <li>{product.title}</li>
-          </ul>
-        </div>
+        <BreadCrumb name={product.name} title={product.title} />
         <div className="lg:flex lg:items-center mt-6 md:mt-14 px-2 lg:px-0">
           <figure className="flex-shrink-0 rounded-2xl overflow-hidden px-4 py-4 bg-white view_image">
             <img
