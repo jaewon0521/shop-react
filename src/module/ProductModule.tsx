@@ -8,7 +8,16 @@ interface CategoryProduct {
   [key: string]: any;
 }
 
-export const productAtom = atom<CategoryProduct>({
+export interface ProductIntoName extends IProduct {
+  name: string;
+}
+
+export const productOnceInfo = atom({
+  key: 'ONCE_PRODUCT',
+  default: {} as ProductIntoName,
+});
+
+export const productListAtom = atom<CategoryProduct>({
   key: 'LIST_PRODUCT',
   default: {
     digital: [],
@@ -19,7 +28,14 @@ export const productAtom = atom<CategoryProduct>({
 
 export const productValueFilter = selector({
   key: 'FILTER_LIST_PRODUCT',
-  get: ({ get }) => get(productAtom),
+  get: ({ get }) => {
+    const product = get(productListAtom);
+    const digital = product.digital;
+    const accessory = product.accessory;
+    const fashion = product.fashion;
+
+    return { digital, accessory, fashion };
+  },
   set: ({ get, set }, newVal) => {
     if (!Array.isArray(newVal)) return;
 
@@ -41,16 +57,6 @@ export const productValueFilter = selector({
       }
       return acc;
     }, {});
-
-    // for (let category in filterdData) {
-    //   let name =
-    //     category === 'digital'
-    //       ? '디지털'
-    //       : category === 'jewelery'
-    //       ? '액세서리'
-    //       : '패션';
-    //   filterdArray.push({ data: filterdData[category], name });
-    // }
-    return set(productAtom, filterdData);
+    return set(productListAtom, filterdData);
   },
 });

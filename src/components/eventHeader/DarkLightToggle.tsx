@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ReactComponent as DarkSvg } from '../../assets/svg/dark.svg';
-import { ReactComponent as LightSvg } from '../../assets/svg/light.svg';
+import { ReactComponent as DarkSvg } from '/src/assets/svg/dark.svg';
+import { ReactComponent as LightSvg } from '/src/assets/svg/light.svg';
 
 const DarkLightToggle = () => {
   const [dark, setDark] = useState(false);

@@ -1,4 +1,5 @@
-import { atom, selector } from 'recoil';
+import { atom, selector, selectorFamily } from 'recoil';
+import { recoilPersist } from 'recoil-persist';
 
 interface CartInfo {
   id: number;
@@ -9,17 +10,27 @@ interface Cart {
   [key: number]: CartInfo;
 }
 
-export const cartProductAtom = atom<Cart>({
+const { persistAtom } = recoilPersist();
+
+export const cartProductAtom = atom({
   key: 'LIST_CART_PRODUCT',
-  default: {},
+  default: {} as Cart,
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const addCart = selector({
   key: 'ADD_CART_PRODUCT',
   get: ({ get }) => get(cartProductAtom),
   set: ({ get, set }, newVal) => {
-    const item = get(cartProductAtom);
-    return set(cartProductAtom, newVal);
+    const prevData = get(cartProductAtom);
+    const newData = {
+      ...prevData,
+      [newVal]: {
+        id: newVal,
+        count: prevData[newVal] ? prevData[newVal]['count'] + 1 : 1,
+      },
+    };
+    set(cartProductAtom, newData);
   },
 });
 
@@ -34,7 +45,12 @@ export const removeCart = selector({
 export const totalCartCount = selector({
   key: 'GET_TOTAL_COUNT_CART',
   get: ({ get }) => {
-    const item = get(cartProductAtom);
-    return item;
+    const originalData = get(cartProductAtom);
+    let totalCount = 0;
+    for (let item in originalData) {
+      totalCount += originalData[item]['count'];
+    }
+
+    return totalCount;
   },
 });

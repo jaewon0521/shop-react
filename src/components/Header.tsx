@@ -1,7 +1,10 @@
 import React from 'react';
+import { totalCartCount } from '../module/CartProductModule';
+import { useRecoilValue } from 'recoil';
+import { Link } from 'react-router-dom';
+
 import DarkLightToggle from './eventHeader/DarkLightToggle';
 import SearchInput from './eventHeader/SearchInput';
-import { Link } from 'react-router-dom';
 
 import { ReactComponent as SideSvg } from '/src/assets/svg/side.svg';
 import { ReactComponent as CartSvg } from '/src/assets/svg/cart.svg';
@@ -53,6 +56,7 @@ const Category = () => {
 };
 
 const EventNav = () => {
+  const cartState = useRecoilValue(totalCartCount);
   return (
     <div className="flex items-center px-2">
       <DarkLightToggle />
@@ -61,7 +65,7 @@ const EventNav = () => {
         <span className="relative">
           <CartSvg />
           <span className="inline-flex items-center justify-center absolute top-0 right-0 px-2 py-1 rounded-full bg-red-500 text-xs font-bold leading-none text-gray-200 transform translate-x-1/2 -translate-y-1/2">
-            0
+            {cartState}
           </span>
         </span>
       </Link>

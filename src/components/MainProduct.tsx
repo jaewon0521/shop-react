@@ -1,17 +1,20 @@
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { productAtom, productValueFilter } from '../module/ProductModule';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { productValueFilter } from '../module/ProductModule';
 import ItemList from './common/ItemList';
 import { useQuery } from 'react-query';
-import { getProducts } from '../api/producs';
+import { getProductsApi } from '../api/producs';
 
 const ProductContainer = () => {
-  const [product, setProduct] = useRecoilState(productValueFilter);
+  const setProduct = useSetRecoilState(productValueFilter);
+  const { digital, fashion, accessory } = useRecoilValue(productValueFilter);
 
   const { isLoading, error, data } = useQuery(
     ['product'],
-    () => getProducts(),
+    () => getProductsApi(),
     {
+      refetchOnWindowFocus: false,
       retry: false,
+      staleTime: 60 * 1000,
       onSuccess: (data) => {
         setProduct(data.data);
       },
@@ -32,15 +35,15 @@ const ProductContainer = () => {
   return (
     <>
       <ItemList
-        data={product.fashion.filter((_: any, idx: any) => 4 > idx)}
+        data={fashion.filter((_: any, idx: any) => 4 > idx)}
         title={'패션'}
       />
       <ItemList
-        data={product.accessory.filter((_: any, idx: any) => 4 > idx)}
+        data={accessory.filter((_: any, idx: any) => 4 > idx)}
         title={'액세서리'}
       />
       <ItemList
-        data={product.digital.filter((_: any, idx: any) => 4 > idx)}
+        data={digital.filter((_: any, idx: any) => 4 > idx)}
         title={'디지털'}
       />
     </>

@@ -1,5 +1,5 @@
 import client from './client';
 
-export const getProducts = () => client.get(`products`);
+export const getProductsApi = () => client.get(`products`);
 
-export const getIdProducts = (id: number) => client.get(`products/${id}`);
+export const getIdProductsApi = (id: string) => client.get(`products/${id}`);
