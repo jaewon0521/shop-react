@@ -3,16 +3,15 @@ import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { getProducts } from './api/producs';
-import Footer from './components/common/Footer';
-import Header from './components/common/Header';
-import DetailProduct from './components/product/DetailProduct';
+import Footer from './components/Footer';
+import Header from './components/Header';
 import { productAtom } from './module/ProductModule';
 import CartPage from './page/CartPage';
 import DetailProductPage from './page/DetailProductPage';
 import Digital from './page/DigitalPage';
 import ErrorPage from './page/ErrorPage';
 import FashionPage from './page/FashionPage';
-import JeweleryPage from './page/JeweleryPage';
+import AccessoryPage from './page/AccessoryPage';
 import MainPage from './page/MainPage';
 
 function App() {
@@ -33,7 +32,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/fashion" element={<FashionPage />} />
-          <Route path="/accessory" element={<JeweleryPage />} />
+          <Route path="/accessory" element={<AccessoryPage />} />
           <Route path="/digital" element={<Digital />} />
           <Route path="/product/:id" element={<DetailProductPage />} />
           <Route path="*" element={<ErrorPage />} />

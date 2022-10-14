@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import { getIdProducts } from '../../api/producs';
-import { DetailProps } from '../../type/data';
-import BreadCrumb from '../common/BreadCrumb';
-import Star from '../common/Star';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { getIdProducts } from '../api/producs';
+import { addCart } from '../module/CartProductModule';
+import { IProduct } from '../type/data';
+import BreadCrumb from './common/BreadCrumb';
+import Star from './common/Star';
 
-interface intoName extends DetailProps {
+interface DataintoName extends IProduct {
   name?: string;
   [key: string]: any;
 }
 
 const DetailProduct = () => {
-  const [product, setProduct] = useState<intoName>({});
+  const [product, setProduct] = useState<DataintoName>({});
+  const [cart, setCart] = useRecoilState(addCart);
+
   const { id } = useParams();
 
   const getProduct = async () => {
@@ -26,7 +29,8 @@ const DetailProduct = () => {
   };
 
   const handleAddCart = () => {
-    console.log(1);
+    if (id) {
+    }
   };
 
   useEffect(() => {
@@ -54,11 +58,9 @@ const DetailProduct = () => {
             </h2>
             <p>{product.description}</p>
             <div className="flex items-center mt-3">
-              <div className="rating rating-half">
-                <Star selectedStars={Number(product.rating?.rate)} />
-                <div className="ml-2">
-                  {product.rating?.rate} / {product.rating?.count} 참여
-                </div>
+              <Star selectedStars={Number(product.rating?.rate)} />
+              <div className="ml-2">
+                {product.rating?.rate} / {product.rating?.count} 참여
               </div>
             </div>
             <p className="mt-2 mb-4 text-3xl">${product.price}</p>

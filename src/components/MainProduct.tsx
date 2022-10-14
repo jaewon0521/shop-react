@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { productValueFilter } from '../module/ProductModule';
-import ItemList from '../components/common/ItemList';
+import ItemList from './common/ItemList';
 
 const ProductContainer = () => {
   const data = useRecoilValue(productValueFilter);

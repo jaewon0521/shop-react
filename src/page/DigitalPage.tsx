@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryItem from '../components/categoryItem/CategoryItem';
+import CategoryItem from '../components/CategoryProduct';
 
 const Digital = () => {
   return <CategoryItem category="디지털" />;

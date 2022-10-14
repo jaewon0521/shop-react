@@ -1,16 +1,55 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BreadCrumb from '../common/BreadCrumb';
-import CountButton from '../countButton/CountButton';
+import BreadCrumb from './common/BreadCrumb';
+import CountButton from './common/CountButton';
+
+interface IbuyButtonProps {
+  price: string;
+  handleBuyButton?: (e: React.MouseEvent<HTMLLabelElement>) => void;
+}
+
+interface ICart {
+  data: any;
+}
+const BuyProductionButton = ({ price, handleBuyButton }: IbuyButtonProps) => {
+  return (
+    <div className="self-start shrink-0 flex items-center mt-10 mb-20">
+      <span className="text-xl md:text-2xl">총 : ${price}</span>
+      <label
+        htmlFor="confirm-modal"
+        className="modal-button btn btn-primary ml-5"
+      >
+        구매하기
+      </label>
+    </div>
+  );
+};
+
+const EmptyCart = () => {
+  return (
+    <>
+      <div>
+        <h1 className="text-2xl">잡아구니에 물품이 없습니다.</h1>
+        <a href="/" className="btn btn-primary mt-10">
+          담으러 가기
+        </a>
+      </div>
+      <div className="lg:flex justify-between mb-20">
+        <div></div>
+        <BuyProductionButton price="0" />
+      </div>
+    </>
+  );
+};
 
 const Cart = () => {
   return (
     <section className="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto">
       <BreadCrumb name="홈" title="장바구니" />
       <div className="mt-6 md:mt-14 px-2 lg:px-0">
-        <div className="lg:flex justify-between mb-20">
+        <EmptyCart />
+        {/* <div className="lg:flex justify-between mb-20">
           <div>
-            {/* map 돌리기 */}
             <div className="lg:flex lg:items-center mt-4 px-2 lg:px-0">
               <Link to="">
                 <figure className="w-56 min-w-full flex-shrink-0 rounded-2xl overflow-hidden px-4 py-4 bg-white">
@@ -30,16 +69,8 @@ const Cart = () => {
               </div>
             </div>
           </div>
-          <div className="self-start shrink-0 flex items-center mt-10 mb-20">
-            <span className="text-xl md:text-2xl">총 : $totalPrice</span>
-            <label
-              htmlFor="confirm-modal"
-              className="modal-button btn btn-primary ml-5"
-            >
-              구매하기
-            </label>
-          </div>
-        </div>
+          <BuyProductionButton price="0" />
+        </div> */}
       </div>
       <input id="confirm-modal" type="checkbox" className="modal-toggle" />
       <div className="modal">

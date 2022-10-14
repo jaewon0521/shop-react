@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
+import CategoryItem from '../components/CategoryProduct';
 
-const Accessory = () => {
-  return <div></div>;
+const AccessoryPage = () => {
+  return <CategoryItem category="액세서리" />;
 };
 
-export default Accessory;
+export default AccessoryPage;

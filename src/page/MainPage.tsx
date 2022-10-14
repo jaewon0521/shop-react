@@ -1,5 +1,5 @@
 import Carousel from '../components/common/Carousel';
-import ProductContainer from '../container/ProductContainer';
+import ProductContainer from '../components/MainProduct';
 
 const MainPage = () => {
   return (

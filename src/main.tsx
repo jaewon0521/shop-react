@@ -6,14 +6,19 @@ import './index.css';
 import './assets/fontStyle.css';
 import './assets/global.css';
 import { RecoilRoot } from 'recoil';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <RecoilRoot>
-    <BrowserRouter>
-      <input type="checkbox" id="side-menu" className="drawer-toggle" />
-      <section className="drawer-content">
-        <App />
-      </section>
-    </BrowserRouter>
-  </RecoilRoot>,
+  <QueryClientProvider client={queryClient}>
+    <RecoilRoot>
+      <BrowserRouter>
+        <input type="checkbox" id="side-menu" className="drawer-toggle" />
+        <section className="drawer-content">
+          <App />
+        </section>
+      </BrowserRouter>
+    </RecoilRoot>
+  </QueryClientProvider>,
 );
