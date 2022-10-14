@@ -19,7 +19,6 @@ export const addCart = selector({
   get: ({ get }) => get(cartProductAtom),
   set: ({ get, set }, newVal) => {
     const item = get(cartProductAtom);
-    debugger;
     return set(cartProductAtom, newVal);
   },
 });

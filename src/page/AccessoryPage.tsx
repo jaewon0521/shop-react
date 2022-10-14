@@ -1,8 +1,8 @@
 import React from 'react';
-import CategoryItem from '../components/CategoryProduct';
+import CategoryProduct from '../components/CategoryProduct';
 
 const AccessoryPage = () => {
-  return <CategoryItem category="액세서리" />;
+  return <CategoryProduct category="액세서리" />;
 };
 
 export default AccessoryPage;

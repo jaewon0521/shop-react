@@ -8,16 +8,22 @@ interface IProps {
   category: string;
 }
 
-const CategoryItem = ({ category }: IProps) => {
+const CategoryProduct = ({ category }: IProps) => {
   const data = useRecoilValue(productValueFilter);
-  const filterdData = data.filter((item) => item.name === category);
+  const categoryEn =
+    category === '패션'
+      ? 'fashion'
+      : category === '액세서리'
+      ? 'accessory'
+      : 'digital';
+  const filterdData = data[categoryEn];
 
   return (
     <section className="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto">
       <BreadCrumb name="홈" title={category} />
-      <ItemList data={filterdData[0].data} title={category} />
+      <ItemList data={filterdData} title={category} />
     </section>
   );
 };
 
-export default CategoryItem;
+export default CategoryProduct;

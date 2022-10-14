@@ -1,11 +1,6 @@
-import { AxiosResponse } from 'axios';
-import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { getProducts } from './api/producs';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import { productAtom } from './module/ProductModule';
 import CartPage from './page/CartPage';
 import DetailProductPage from './page/DetailProductPage';
 import Digital from './page/DigitalPage';
@@ -15,15 +10,6 @@ import AccessoryPage from './page/AccessoryPage';
 import MainPage from './page/MainPage';
 
 function App() {
-  const [product, setProduct] = useRecoilState(productAtom);
-  const getItem = async () => {
-    const { data } = await getProducts();
-    setProduct(data);
-  };
-
-  useEffect(() => {
-    getItem();
-  }, []);
   return (
     <>
       <Header />
