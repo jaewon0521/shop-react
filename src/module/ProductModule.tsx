@@ -12,14 +12,9 @@ export interface ProductIntoName extends IProduct {
   name: string;
 }
 
-export const productsOriginal = atom({
-  key: 'ORIGINAL_PRODUCT',
+export const productOriginalListAtom = atom<IProduct[]>({
+  key: 'ORIGINAL_LIST_PRODUCT',
   default: [],
-});
-
-export const productOnceInfo = atom({
-  key: 'ONCE_PRODUCT',
-  default: {} as ProductIntoName,
 });
 
 export const productListAtom = atom<CategoryProduct>({
@@ -31,11 +26,23 @@ export const productListAtom = atom<CategoryProduct>({
   },
 });
 
+export const productOnceInfo = selectorFamily({
+  key: 'ONCE_PRODUCT',
+  get:
+    (id) =>
+    ({ get }) => {
+      const originalData = get(productOriginalListAtom);
+      const filterdData: IProduct = originalData.find((item) => item.id == id)!;
+
+      return filterdData;
+    },
+});
+
 export const productValueFilter = selector({
   key: 'FILTER_LIST_PRODUCT',
-  get: async ({ get }) => {
+  get: ({ get }) => {
     const product = get(productListAtom);
-    debugger;
+
     const digital = product.digital;
     const accessory = product.accessory;
     const fashion = product.fashion;
@@ -44,7 +51,7 @@ export const productValueFilter = selector({
   },
   set: ({ get, set }, newVal) => {
     if (!Array.isArray(newVal)) return;
-
+    // [...20 Data] => {fashion: [], digital: [], accessory: []} 카테고리별 변환
     const data = newVal;
     const filterdData = data.reduce((acc: any, cur: IProduct) => {
       switch (cur.category) {
@@ -63,6 +70,8 @@ export const productValueFilter = selector({
       }
       return acc;
     }, {});
-    return set(productListAtom, filterdData);
+
+    set(productOriginalListAtom, newVal);
+    set(productListAtom, filterdData);
   },
 });

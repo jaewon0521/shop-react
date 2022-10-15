@@ -10,10 +10,7 @@ import { RecoilRoot } from 'recoil';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <RecoilRoot>
     <BrowserRouter>
-      <input type="checkbox" id="side-menu" className="drawer-toggle" />
-      <section className="drawer-content">
-        <App />
-      </section>
+      <App />
     </BrowserRouter>
   </RecoilRoot>,
 );

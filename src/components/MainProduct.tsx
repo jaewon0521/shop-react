@@ -1,22 +1,12 @@
 import React, { useEffect } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { productValueFilter } from '../module/ProductModule';
 import ItemList from './common/ItemList';
 import { getProductsApi } from '../api/producs';
 import ItemSkeleton from './common/ItemSkeleton';
 
 const ProductContainer = () => {
-  const setProduct = useSetRecoilState(productValueFilter);
-  const { digital, fashion, accessory } = useRecoilValue(productValueFilter);
-
-  useEffect(() => {
-    getProductAll();
-  }, []);
-
-  const getProductAll = async () => {
-    const response = await getProductsApi();
-    setProduct(response.data);
-  };
+  const { fashion, accessory, digital } = useRecoilValue(productValueFilter);
 
   return (
     <>
