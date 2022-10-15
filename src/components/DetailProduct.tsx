@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { addCart } from '../module/CartProductModule';
+import { handleCountCart } from '../module/CartProductModule';
 import { productOnceInfo } from '../module/ProductModule';
 import BreadCrumb from './common/BreadCrumb';
 import DetailProductSkeleton from './common/DetailProductSkeleton';
@@ -21,11 +21,11 @@ const Category: ICategory = {
 const DetailProduct = () => {
   const { id } = useParams();
   const product = useRecoilValue(productOnceInfo(id))!;
-  const setCart = useSetRecoilState(addCart);
+  const setCountCart = useSetRecoilState(handleCountCart);
   const name = Category[product?.category];
 
   const handleAddCart = () => {
-    setCart(id!);
+    setCountCart({ id, type: 'plus' });
   };
 
   return (

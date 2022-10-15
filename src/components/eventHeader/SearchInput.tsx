@@ -1,29 +1,53 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { getIdProductsApi } from '../../api/producs';
 import { ReactComponent as SearchSvg } from '../../assets/svg/search.svg';
+import { productOriginalListAtom } from '../../module/ProductModule';
+import { IProduct } from '../../type/data';
 
-const SearchItem = () => {
+interface ISearchItemList {
+  searchList: IProduct[];
+}
+
+const SearchItemList = ({ searchList }: ISearchItemList) => {
+  console.log(searchList);
   return (
     <ul className="!fixed left-0 sm:!absolute sm:top-14 menu dropdown-content w-full sm:w-64 max-h-96 shadow text-base-content overflow-y-auto bg-white dark:bg-gray-600">
-      <li>
-        <Link to="/" className="text-left js-searchedItem">
-          <span className="text-gray-600 dark:text-white line-clamp-2">
-            1234
-          </span>
-        </Link>
-      </li>
-      <li>
-        <Link to="/" className="text-left js-searchedItem">
-          <span className="text-gray-600 dark:text-white line-clamp-2">
-            12345
-          </span>
-        </Link>
-      </li>
+      {searchList.length !== 0 &&
+        searchList.map((item) => (
+          <li>
+            <Link
+              to={`product/${item.id}`}
+              className="text-left js-searchedItem"
+            >
+              <span className="text-gray-600 dark:text-white line-clamp-2">
+                {item.title}
+              </span>
+            </Link>
+          </li>
+        ))}
     </ul>
   );
 };
 
 const SearchInput = () => {
+  const originalProductList = useRecoilValue(productOriginalListAtom);
+  const [inputSearch, setInputSearch] = useState('');
+
+  const searchedDataTest = useMemo(
+    () =>
+      originalProductList.filter((item) => {
+        if (inputSearch === '') return false;
+        return item.title.toUpperCase().includes(inputSearch.toUpperCase());
+      }),
+    [inputSearch],
+  );
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputSearch(e.target.value);
+  };
+
   return (
     <div className="dropdown">
       <button
@@ -34,10 +58,12 @@ const SearchInput = () => {
       </button>
       <input
         type="text"
-        className="fixed left-0 top-4 -z-10 opacity-0 sm:opacity-100 sm:static sm:flex w-full input input-ghost focus:outline-0 rounded-none sm:rounded bg-gray-300 dark:bg-gray-600 !text-gray-800 dark:!text-white sm:transform-none transition-all js-searchInput w-56"
+        className="fixed left-0 top-4 -z-10 opacity-0 sm:opacity-100 sm:static sm:flex w-full input input-ghost focus:outline-0 rounded-none sm:rounded bg-gray-300 dark:bg-gray-600 !text-gray-800 dark:!text-white sm:transform-none transition-all js-searchInput"
         placeholder="검색"
+        value={inputSearch}
+        onChange={handleOnChange}
       />
-      <SearchItem />
+      <SearchItemList searchList={searchedDataTest} />
     </div>
   );
 };
