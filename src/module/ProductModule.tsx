@@ -12,13 +12,18 @@ export interface ProductIntoName extends IProduct {
   name: string;
 }
 
+export const productsOriginal = atom({
+  key: 'ORIGINAL_PRODUCT',
+  default: [],
+});
+
 export const productOnceInfo = atom({
   key: 'ONCE_PRODUCT',
   default: {} as ProductIntoName,
 });
 
 export const productListAtom = atom<CategoryProduct>({
-  key: 'LIST_PRODUCT',
+  key: 'CATEGORY_LIST_PRODUCT',
   default: {
     digital: [],
     accessory: [],
@@ -28,8 +33,9 @@ export const productListAtom = atom<CategoryProduct>({
 
 export const productValueFilter = selector({
   key: 'FILTER_LIST_PRODUCT',
-  get: ({ get }) => {
+  get: async ({ get }) => {
     const product = get(productListAtom);
+    debugger;
     const digital = product.digital;
     const accessory = product.accessory;
     const fashion = product.fashion;

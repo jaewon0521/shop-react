@@ -30,9 +30,9 @@ const EmptyCart = () => {
     <>
       <div>
         <h1 className="text-2xl">잡아구니에 물품이 없습니다.</h1>
-        <a href="/" className="btn btn-primary mt-10">
+        <Link to="/" className="btn btn-primary mt-10">
           담으러 가기
-        </a>
+        </Link>
       </div>
       <div className="lg:flex justify-between mb-20">
         <div></div>

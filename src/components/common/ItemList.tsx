@@ -5,9 +5,10 @@ import { IProduct } from '../../type/data';
 interface IProps {
   data: IProduct[];
   title: string;
+  onLoading?: React.ReactNode;
 }
 
-const ItemList = ({ data, title }: IProps) => {
+const ItemList = ({ data, title, onLoading }: IProps) => {
   return (
     <section className="pt-6 lg:pt-12 pb-4 lg:pb-8 px-4 xl:px-2 mt-10 xl:container mx-auto">
       <h2 className="mb-5 lg:mb-8 text-3xl lg:text-4xl text-center font-bold">
@@ -17,6 +18,7 @@ const ItemList = ({ data, title }: IProps) => {
         className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 item_list"
         data-scroll="true"
       >
+        {!data.length && onLoading}
         {data &&
           data.map((el) => (
             <Link
