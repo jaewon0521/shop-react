@@ -1,7 +1,8 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, useRef } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { getProductsApi } from './api/producs';
+import Drawer from './components/common/Drawer';
 import LoadingSpinner from './components/common/LoadingSpinner';
 
 import Footer from './components/Footer';
@@ -19,6 +20,10 @@ const DetailProductPage = React.lazy(() => import('./page/DetailProductPage'));
 
 function App() {
   const setProduct = useSetRecoilState(productValueFilter);
+  const $hamburger = useRef<HTMLInputElement>(null);
+  const closeOverlay = () => {
+    $hamburger?.current?.click();
+  };
 
   const getProductAll = async () => {
     const response = await getProductsApi();
@@ -61,8 +66,9 @@ function App() {
             </Routes>
           </Suspense>
         </section>
+        <Footer />
       </section>
-      <Footer />
+      <Drawer closeOverlay={closeOverlay} />
     </>
   );
 }
