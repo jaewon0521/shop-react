@@ -1,17 +1,15 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { getIdProductsApi } from '../../api/producs';
+import { useRecoilValue } from 'recoil';
 import { ReactComponent as SearchSvg } from '../../assets/svg/search.svg';
 import { productOriginalListAtom } from '../../module/ProductModule';
-import { IProduct } from '../../type/data';
+import { IProduct } from '../../type/products';
 
 interface ISearchItemList {
   searchList: IProduct[];
 }
 
 const SearchItemList = ({ searchList }: ISearchItemList) => {
-  console.log(searchList);
   return (
     <ul className="!fixed left-0 sm:!absolute sm:top-14 menu dropdown-content w-full sm:w-64 max-h-96 shadow text-base-content overflow-y-auto bg-white dark:bg-gray-600">
       {searchList.length !== 0 &&

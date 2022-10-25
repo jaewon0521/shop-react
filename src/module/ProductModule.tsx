@@ -1,5 +1,5 @@
 import { atom, selector, selectorFamily } from 'recoil';
-import { IProduct } from '../type/data';
+import { IProduct } from '../type/products';
 
 interface CategoryProduct {
   digital: IProduct[];
@@ -52,7 +52,7 @@ export const productValueFilter = selector({
   set: ({ get, set }, newVal) => {
     if (!Array.isArray(newVal)) return;
     // [...20 Data] => {fashion: [], digital: [], accessory: []} 카테고리별 변환
-    const data = newVal;
+    const data = [...newVal];
     const filterdData = data.reduce((acc: any, cur: IProduct) => {
       switch (cur.category) {
         case 'electronics':

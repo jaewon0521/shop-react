@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { getProductsApi } from '../api/producs';
+import React from 'react';
+import { useRecoilValue } from 'recoil';
 import { productValueFilter } from '../module/ProductModule';
 import BreadCrumb from './common/BreadCrumb';
 import ItemList from './common/ItemList';
@@ -25,6 +24,7 @@ const CategoryProduct = ({ category }: IProps) => {
       <BreadCrumb name="홈" title={category} />
       <ItemList
         data={filterdData}
+        slice={filterdData.length}
         onLoading={<ItemSkeleton count={9} />}
         title={category}
       />

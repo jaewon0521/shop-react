@@ -1,11 +1,11 @@
 import Carousel from '../components/common/Carousel';
-import ProductContainer from '../components/MainProduct';
+import MainProduct from '../components/MainProduct';
 
 const MainPage = () => {
   return (
     <>
       <Carousel />
-      <ProductContainer />
+      <MainProduct />
     </>
   );
 };

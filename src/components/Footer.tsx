@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { ReactComponent as VisaSvg } from '/src/assets/svg/card1.svg';
 import { ReactComponent as MasterCardSvg } from '/src/assets/svg/card2.svg';

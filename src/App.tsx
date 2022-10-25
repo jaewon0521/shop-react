@@ -6,6 +6,7 @@ import LoadingSpinner from './components/common/LoadingSpinner';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
+import { ScrollToTop } from './lib/helpers';
 import { productValueFilter } from './module/ProductModule';
 
 const Digital = React.lazy(() => import('./page/DigitalPage'));
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <input type="checkbox" id="side-menu" className="drawer-toggle" />
       <section className="drawer-content">
         <Header />
