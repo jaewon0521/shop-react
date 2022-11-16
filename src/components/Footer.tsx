@@ -20,7 +20,7 @@ const Footer = () => {
           target="_blank"
           className="link link-hover"
         >
-          제로베이스
+          React Shop
         </a>
       </div>
       <ul className="flex">
@@ -72,7 +72,7 @@ const Footer = () => {
         </div>
       </div>
       <div>
-        <p>Copyright © 2022 Zero Base</p>
+        <p>Copyright © 2022 Youn JaeWon</p>
       </div>
     </footer>
   );

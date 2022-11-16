@@ -7,15 +7,15 @@ interface CartInfo {
   count: number;
 }
 
-interface Cart {
-  [key: number]: CartInfo;
+interface CartState {
+  items: Record<string | number, CartInfo>;
 }
 
 const { persistAtom } = recoilPersist();
 
 export const cartProductAtom = atom({
   key: 'LIST_CART_PRODUCT',
-  default: {} as Cart,
+  default: {} as CartState,
   effects_UNSTABLE: [persistAtom],
 });
 
@@ -45,6 +45,20 @@ export const cartProductArrayToJson = selector({
   },
 });
 
+// {1: {id:1, count:2}, 2:{id:2, count:3}} return 5
+export const totalCartCount = selector({
+  key: 'GET_TOTAL_COUNT_CART',
+  get: ({ get }) => {
+    const originalData = get(cartProductAtom);
+    let totalCount = 0;
+    for (let item in originalData) {
+      totalCount += originalData[item]['count'];
+    }
+
+    return totalCount;
+  },
+});
+
 // (id, type: plus, minus) => {id: {id: id, count+1 or count-1}}
 export const handleCountCart = selector({
   key: 'HANDLE_COUNT_CART_PRODUCT',
@@ -63,19 +77,5 @@ export const handleCountCart = selector({
     if (newData[newVal.id]['count'] === 0) delete newData[newVal.id];
 
     set(cartProductAtom, newData);
-  },
-});
-
-// {1: {id:1, count:2}, 2:{id:2, count:3}} return 5
-export const totalCartCount = selector({
-  key: 'GET_TOTAL_COUNT_CART',
-  get: ({ get }) => {
-    const originalData = get(cartProductAtom);
-    let totalCount = 0;
-    for (let item in originalData) {
-      totalCount += originalData[item]['count'];
-    }
-
-    return totalCount;
   },
 });

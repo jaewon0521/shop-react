@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { ReactComponent as SearchSvg } from '../../assets/svg/search.svg';
 import { productOriginalListAtom } from '../../module/ProductModule';
@@ -7,22 +7,27 @@ import { IProduct } from '../../type/products';
 
 interface ISearchItemList {
   searchList: IProduct[];
+  goLink: (id: number) => void;
 }
 
-const SearchItemList = ({ searchList }: ISearchItemList) => {
+const SearchItemList = ({ searchList, goLink }: ISearchItemList) => {
   return (
     <ul className="!fixed left-0 sm:!absolute sm:top-14 menu dropdown-content w-full sm:w-64 max-h-96 shadow text-base-content overflow-y-auto bg-white dark:bg-gray-600">
       {searchList.length !== 0 &&
         searchList.map((item) => (
-          <li>
-            <Link
-              to={`product/${item.id}`}
+          <li key={item.id}>
+            <a
+              href="#"
               className="text-left js-searchedItem"
+              onClick={(e) => {
+                e.preventDefault();
+                goLink(item.id);
+              }}
             >
               <span className="text-gray-600 dark:text-white line-clamp-2">
                 {item.title}
               </span>
-            </Link>
+            </a>
           </li>
         ))}
     </ul>
@@ -30,6 +35,7 @@ const SearchItemList = ({ searchList }: ISearchItemList) => {
 };
 
 const SearchInput = () => {
+  const navigate = useNavigate();
   const originalProductList = useRecoilValue(productOriginalListAtom);
   const [inputSearch, setInputSearch] = useState('');
 
@@ -44,6 +50,11 @@ const SearchInput = () => {
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputSearch(e.target.value);
+  };
+
+  const handleGoLink = (id: number) => {
+    setInputSearch('');
+    navigate(`product/${id}`);
   };
 
   return (
@@ -61,7 +72,7 @@ const SearchInput = () => {
         value={inputSearch}
         onChange={handleOnChange}
       />
-      <SearchItemList searchList={searchedDataTest} />
+      <SearchItemList searchList={searchedDataTest} goLink={handleGoLink} />
     </div>
   );
 };
