@@ -19,7 +19,7 @@
 <p>
   <img src="https://user-images.githubusercontent.com/52682603/138834243-fb74d81e-e90d-4c6a-8793-05df588f59ab.png" alt="react" width=15%>
   <img src="https://user-images.githubusercontent.com/52682603/138834262-a7af2293-e398-416d-8dd3-ff5fab8cb80d.png" alt="type_script" width=15%>
-  <img src="https://user-images.githubusercontent.com/52682603/138835731-e0e727ad-0bd1-44ca-a3b3-98c4d1b89c20.png" alt="recoil" width=15%>
+  <img src="https://user-images.githubusercontent.com/97930034/202405467-450584e0-0eeb-4d39-8171-2dc48df9277b.png" alt="recoil" width=15%>
 
 </p>
 
