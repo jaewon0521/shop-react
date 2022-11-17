@@ -1,8 +1,9 @@
 # react-shop
 
 <p align="center">
-  <img src="https://img.shields.io/badge/react-v18.0.2-9cf?logo=react" alt="react" />
-  <img src="https://img.shields.io/badge/typescript-v4.3.5-blue?logo=typescript" alt="typescript"/>
+  <img src="https://img.shields.io/badge/react-v18.2.0-9cf?logo=react" alt="react" />
+  <img src="https://img.shields.io/badge/typescript-v4.6.4-blue?logo=typescript" alt="typescript"/>
+  <img src="https://img.shields.io/badge/vite-v3.0.9-blueviolet?logo=vite" alt="typescript"/>
 </p>
 
 
