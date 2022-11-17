@@ -22,6 +22,7 @@ React-Shop 주소 : https://funny-pastelito-2c6a70.netlify.app
   <img src="https://user-images.githubusercontent.com/52682603/138834243-fb74d81e-e90d-4c6a-8793-05df588f59ab.png" alt="react" width=15% height='150px'>
   <img src="https://user-images.githubusercontent.com/52682603/138834262-a7af2293-e398-416d-8dd3-ff5fab8cb80d.png" alt="type_script" width=15% height='150px'>
   <img src="https://user-images.githubusercontent.com/97930034/202420445-d64aef58-42d8-4b12-be53-3b6451a62286.png" alt="recoil" width=15% height='150px'>
+  <img src="https://user-images.githubusercontent.com/97930034/202435866-ae014796-ebee-4580-bfb2-9fc0c2b612cf.png" alt="tailwindCss" width=15% height='150px'>
 </p>
 
 - **React** 로 사용자와의 상호작용이 많은 웹 페이지를 효율적으로 구현하고 관리했어요.
