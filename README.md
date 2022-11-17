@@ -9,6 +9,7 @@
 
 ## 🚀 Demo
 
+React-Shop 주소 : https://funny-pastelito-2c6a70.netlify.app/accessory
 
 ## ⚡️ Skills
 
@@ -17,23 +18,34 @@
 ### Front-end
 
 <p>
-  <img src="https://user-images.githubusercontent.com/52682603/138834243-fb74d81e-e90d-4c6a-8793-05df588f59ab.png" alt="react" width=15%>
-  <img src="https://user-images.githubusercontent.com/52682603/138834262-a7af2293-e398-416d-8dd3-ff5fab8cb80d.png" alt="type_script" width=15%>
-  <img src="https://user-images.githubusercontent.com/97930034/202405467-450584e0-0eeb-4d39-8171-2dc48df9277b.png" alt="recoil" width=15% height='150px'>
-
+  <img src="https://user-images.githubusercontent.com/52682603/138834243-fb74d81e-e90d-4c6a-8793-05df588f59ab.png" alt="react" width=15% height='150px'>
+  <img src="https://user-images.githubusercontent.com/52682603/138834262-a7af2293-e398-416d-8dd3-ff5fab8cb80d.png" alt="type_script" width=15% height='150px'>
+  <img src="https://user-images.githubusercontent.com/97930034/202420445-d64aef58-42d8-4b12-be53-3b6451a62286.png" alt="recoil" width=15% height='150px'>
 </p>
 
 - **React** 로 사용자와의 상호작용이 많은 웹 페이지를 효율적으로 구현하고 관리했어요.
-- **Typescript** 를 사용해 빌드 시에 오류를 미리 찾아, 코드 안정성을 높였어요. 또한 .
-- **Recoil** 로 상태관리 하여 컴포넌트간에 프롭스 드릴링을 줄일 수 있었어요.
+- **Typescript** 를 사용해 빌드 시에 오류를 미리 찾아, 코드 안정성을 높였어요. 또한, 코드 어시스트, 타입 체크, 리팩토링 등을 지원받을 수 있어 생산성을 높일 수 있었어요.
+- **Recoil** 로 사용하여 쉽게 전역 상태 관리를 할 수 있었어요.
 ---
 
 
-#### CI/CD
+#### Deploy
 
 <p>
-  <img src="https://user-images.githubusercontent.com/52682603/138834229-e8a9dcb0-bdb8-4aec-9a3e-be1f9ff44149.png" alt="github_actions" width=15%>
+  <img src="https://user-images.githubusercontent.com/97930034/202415610-8d552efe-dd15-4e3f-abd9-22f89977de91.png" alt="netilfy" width=15%>
 </p>
 
-- **Github Actions** 로 코드 퀄리티와 테스트를 검사해요. 프론트엔드 코드의 지속적 배포를 진행해요. 
+- **Netilfy** 로 간단하게 배포할 수 있었어요.
+
+# 느낀점
+
+vite 로 개발환경을 설정하여 생산성을 높일 수 있었습니다.
+
+recoil 상태관리 라이브러리를 사용하여, redux 라이브러리와 차이점을 알 수 있었습니다.
+
+recoil 은 사용하기 쉽지만, 읽기 좋은 코드로 작성하는 데에 있어 고민해 보아야 할 것 같습니다.
+
+selector함수를 사용한다면, 무분별하게 atom 값에 접근하는 것을 지양해야 한다고 생각합니다. (디버깅이 어렵습니다)
+
+컴포넌트를 추상화하여 재사용성을 높였으며, 리액트는 컴포넌트 단위로 렌더링 하기 때문에 렌더링 성능을 올렸습니다.
 
