@@ -9,7 +9,7 @@
 
 ## 🚀 Demo
 
-React-Shop 주소 : https://funny-pastelito-2c6a70.netlify.app/accessory
+React-Shop 주소 : https://funny-pastelito-2c6a70.netlify.app
 
 ## ⚡️ Skills
 
