@@ -12,3 +12,8 @@ export interface IProduct {
   rating: Irating;
   title: string;
 }
+
+export interface ICartProduct extends IProduct {
+  totalPrice: number;
+  count: number;
+}

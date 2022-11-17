@@ -1,18 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 import {
   cartProductArrayToJson,
-  handleCountCart,
+  cartProductAtom,
 } from '../module/CartProductModule';
 import BreadCrumb from './common/BreadCrumb';
-
+import CartList from './CartList';
+import Confirm from './common/Confirm';
 interface IbuyButtonProps {
   price: number;
-}
-
-interface IBuyModalProp {
-  handleBuyProduct: () => void;
 }
 
 const BuyProductionButton = ({ price }: IbuyButtonProps) => {
@@ -26,32 +23,6 @@ const BuyProductionButton = ({ price }: IbuyButtonProps) => {
         구매하기
       </label>
     </div>
-  );
-};
-
-const BuyModal = ({ handleBuyProduct }: IBuyModalProp) => {
-  return (
-    <>
-      <input id="confirm-modal" type="checkbox" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">정말로 구매하시겠습니까?</h3>
-          <p className="py-4">장바구니의 모든 상품들이 삭제됩니다.</p>
-          <div className="modal-action">
-            <label
-              htmlFor="confirm-modal"
-              className="btn btn-primary"
-              onClick={handleBuyProduct}
-            >
-              네
-            </label>
-            <label htmlFor="confirm-modal" className="btn btn-outline">
-              아니오
-            </label>
-          </div>
-        </div>
-      </div>
-    </>
   );
 };
 
@@ -73,14 +44,10 @@ const EmptyCart = () => {
 
 const Cart = () => {
   const { data, totalPrice } = useRecoilValue(cartProductArrayToJson);
-  const handleCountProduct = useSetRecoilState(handleCountCart);
-
-  const handleCartProductCount = (id: string, type: 'plus' | 'minus') => {
-    return handleCountProduct({ id, type });
-  };
+  const handleBuy = useResetRecoilState(cartProductAtom);
 
   const handleCartProductBuy = () => {
-    console.log('buy');
+    handleBuy();
   };
 
   return (
@@ -92,57 +59,15 @@ const Cart = () => {
         ) : (
           <div className="lg:flex justify-between mb-20">
             <div>
-              {data.map((item) => (
-                <div
-                  key={item.id}
-                  className="lg:flex lg:items-center mt-4 px-2 lg:px-0"
-                >
-                  <Link to={`product/${item.id}`}>
-                    <figure className="w-56 min-w-full flex-shrink-0 rounded-2xl overflow-hidden px-4 py-4 bg-white">
-                      <img
-                        src={item.image}
-                        alt="title"
-                        className="object-contain w-full h-48"
-                      />
-                    </figure>
-                  </Link>
-                  <div className="card-body px-1 lg:px-12">
-                    <h2 className="card-title">
-                      <Link to={`product/${item.id}`}>{item.title}</Link>
-                    </h2>
-                    <p className="mt-2 mb-4 text-3xl">${item.totalPrice}</p>
-                    <div className="card-actions">
-                      <div className="btn-group">
-                        <button
-                          className="btn btn-primary"
-                          onClick={() =>
-                            handleCartProductCount(item.id, 'minus')
-                          }
-                        >
-                          -
-                        </button>
-                        <button className="btn btn-ghost no-animation">
-                          {item.count}
-                        </button>
-                        <button
-                          className="btn btn-primary"
-                          onClick={() =>
-                            handleCartProductCount(item.id, 'plus')
-                          }
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              {data.map((cartItem) => (
+                <CartList key={cartItem.id} cartItem={cartItem} />
               ))}
             </div>
             <BuyProductionButton price={totalPrice} />
           </div>
         )}
       </div>
-      <BuyModal handleBuyProduct={handleCartProductBuy} />
+      <Confirm onBuyProduct={handleCartProductBuy} />
     </section>
   );
 };

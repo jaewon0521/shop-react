@@ -1,10 +1,15 @@
+import './index.css';
+import './assets/css/style.css';
+import './assets/css/tailwind.css';
+
 import React, { Suspense, useEffect, useRef } from 'react';
+
 import { Route, Routes } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { getProductsApi } from './api/producs';
+
 import Drawer from './components/common/Drawer';
 import LoadingSpinner from './components/common/LoadingSpinner';
-
 import Footer from './components/Footer';
 import Header from './components/Header';
 import { ScrollToTop } from './lib/helpers';
