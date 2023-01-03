@@ -1,10 +1,6 @@
 # react-shop
 
-<p align="center">
-  <img src="https://img.shields.io/badge/react-v18.2.0-9cf?logo=react" alt="react" />
-  <img src="https://img.shields.io/badge/typescript-v4.6.4-blue?logo=typescript" alt="typescript"/>
-  <img src="https://img.shields.io/badge/vite-v3.0.9-blueviolet?logo=vite" alt="typescript"/>
-</p>
+
 
 
 
@@ -18,24 +14,18 @@ React-Shop 주소 : https://funny-pastelito-2c6a70.netlify.app
 
 ### Front-end
 
-<p>
-  <img src="https://user-images.githubusercontent.com/52682603/138834243-fb74d81e-e90d-4c6a-8793-05df588f59ab.png" alt="react" width=15% height='150px'>
-  <img src="https://user-images.githubusercontent.com/52682603/138834262-a7af2293-e398-416d-8dd3-ff5fab8cb80d.png" alt="type_script" width=15% height='150px'>
-  <img src="https://user-images.githubusercontent.com/97930034/202420445-d64aef58-42d8-4b12-be53-3b6451a62286.png" alt="recoil" width=15% height='150px'>
-  <img src="https://user-images.githubusercontent.com/97930034/202435866-ae014796-ebee-4580-bfb2-9fc0c2b612cf.png" alt="tailwindCss" width=15% height='150px'>
-</p>
+![React](https://img.shields.io/badge/react-444444?style=for-the-badge&logo=react)
+![React](https://img.shields.io/badge/typescript-444444?style=for-the-badge&logo=typescript)
+![React](https://img.shields.io/badge/vite-444444?style=for-the-badge&logo=vite)
+![React](https://img.shields.io/badge/recoil-444444?style=for-the-badge&logo=recoil)
 
-- **React** 로 사용자와의 상호작용이 많은 웹 페이지를 효율적으로 구현하고 관리했어요.
-- **Typescript** 를 사용해 빌드 시에 오류를 미리 찾아, 코드 안정성을 높였어요. 또한, 코드 어시스트, 타입 체크, 리팩토링 등을 지원받을 수 있어 생산성을 높일 수 있었어요.
-- **Recoil** 로 사용하여 쉽게 전역 상태 관리를 할 수 있었어요.
+
 ---
 
 
 #### Deploy
 
-<p>
-  <img src="https://user-images.githubusercontent.com/97930034/202415610-8d552efe-dd15-4e3f-abd9-22f89977de91.png" alt="netilfy" width=15%>
-</p>
+![React](https://img.shields.io/badge/netlify-444444?style=for-the-badge&logo=netlify)
 
 - **Netilfy** 로 간단하게 배포할 수 있었어요.
 
