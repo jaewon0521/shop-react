@@ -1,10 +1,12 @@
 # react-shop
 
 
-
 ## 🚀 Demo
 
 URL: https://funny-pastelito-2c6a70.netlify.app
+
+## ⚡️ Skills
+
 
 
 ### Front-end
